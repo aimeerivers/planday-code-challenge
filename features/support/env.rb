@@ -18,3 +18,5 @@ Capybara.register_driver :selenium do |app|
 end
 
 World(Capybara::DSL)
+
+After { page.driver.quit }
