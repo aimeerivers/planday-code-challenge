@@ -1,13 +1,9 @@
 When("they try to log in with invalid credentials") do
-  fill_in("Username", with: "foo")
-  fill_in("Password", with: "bar")
-  click_button("MainLoginButton")
+  log_in_as("foo", "bar")
 end
 
 When("they try to log in with valid credentials") do
-  fill_in("Username", with: "plandayqa@outlook.com")
-  fill_in("Password", with: "APItesting21")
-  click_button("MainLoginButton")
+  log_in_as("plandayqa@outlook.com", "APItesting21")
 end
 
 Then("they should not be able to log in") do
@@ -19,4 +15,12 @@ Then("they are logged in successfully") do
   within("[role=banner]") {
     expect(page).to have_css("[title=Employee]")
   }
+end
+
+private
+
+def log_in_as(username, password)
+  fill_in("Username", with: username)
+  fill_in("Password", with: password)
+  click_button("MainLoginButton")
 end
