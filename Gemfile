@@ -5,5 +5,6 @@ gem "capybara"
 gem "selenium-webdriver"
 gem "webdriver_manager"
 gem "rspec"
+gem "retriable"
 
 gem "pry"

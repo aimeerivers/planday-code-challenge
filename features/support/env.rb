@@ -4,6 +4,7 @@ require "capybara"
 require "capybara/dsl"
 require "rspec"
 require "selenium-webdriver"
+require "retriable"
 
 require "pry"
 

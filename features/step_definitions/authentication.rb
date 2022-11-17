@@ -12,8 +12,10 @@ Then("they should not be able to log in") do
 end
 
 Then("they are logged in successfully") do
-  within("[role=banner]") {
-    expect(page).to have_css("[title=Employee]")
+  Retriable.retriable {
+    within("[role=banner]") {
+      expect(page).to have_css("[title=Employee]")
+    }
   }
 end
 
