@@ -23,4 +23,10 @@ def log_in_as(username, password)
   fill_in("Username", with: username)
   fill_in("Password", with: password)
   click_button("MainLoginButton")
+
+  if(page).has_css?(".g-recaptcha")
+    puts "I need help!"
+    puts "Please solve the captcha, then press ctrl-d to continue."
+    binding.pry
+  end
 end

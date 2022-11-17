@@ -5,6 +5,8 @@ require "capybara/dsl"
 require "rspec"
 require "selenium-webdriver"
 
+require "pry"
+
 Capybara.app_host = "https://test1234.planday.com"
 Capybara.run_server = false
 Capybara.default_driver = :selenium
