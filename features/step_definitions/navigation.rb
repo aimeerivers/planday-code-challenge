@@ -1,4 +1,4 @@
-Given("a user visits the login form") do
+Given(/^an? .* visits the login form$/) do
   visit "/"
   accept_cookies
   expect(page).to have_css("#login")
