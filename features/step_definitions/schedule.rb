@@ -40,6 +40,22 @@ Then("the shift is visible in the schedule grid") do
   @shift.created = true
 end
 
+After("@create_shift") do
+  if @shift.created
+    today_index = page.all(".board-header__title").map(&:text).index("Today")
+    within(employee_row(@shift.employee_name)) {
+      all(".board__cell")[today_index].hover
+      page.find(".three-dots-icon").click
+    }
+
+    page.find(".shift-context-menu-popup__item", text: "Delete shift").click
+    expect(page).to have_css(".modal-dialog__overlay", text: "Are you sure?")
+    within(".modal-dialog__overlay") { click_button("Delete") }
+
+    Retriable.retriable { expect(page).to have_text("Shift deleted") }
+  end
+end
+
 private
 
 def employee_row(employee_name)
