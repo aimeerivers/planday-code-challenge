@@ -1,3 +1,9 @@
+Given("an employee is logged in") do
+  step "an employee visits the login form"
+  step "they try to log in with valid credentials"
+  step "they are logged in successfully"
+end
+
 When("they try to log in with invalid credentials") do
   log_in_as("foo", "bar")
 end
